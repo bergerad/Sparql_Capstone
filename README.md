@@ -10,7 +10,7 @@ Webpage for DBPedia (Shengjie Quan)
 - Example of types and prefixes
 - Go over Barack Obama site (or any other thing really)
 
-Webpage for Sparql               
+Webpage for Sparql (Olivia Whitman)               
 - What is it based on? (SQL)
 - What is it used for? (querying any relational database that uses triples)
 
