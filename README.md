@@ -3,8 +3,8 @@
 Here are the tasks we need to do: 
 
 Webpage for the semantic web
--Visual Examples
--RDF Explanation 
+- Visual Examples
+- RDF Explanation 
 
 Webpage for DBPedia
 - Example of types and prefixes
