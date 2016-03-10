@@ -6,7 +6,7 @@ Webpage for the semantic web
 - Visual Examples
 - RDF Explanation 
 
-Webpage for DBPedia
+Webpage for DBPedia (Shengjie Quan)
 - Example of types and prefixes
 - Go over Barack Obama site (or any other thing really)
 
