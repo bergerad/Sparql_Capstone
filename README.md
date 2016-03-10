@@ -17,6 +17,12 @@ Webpage for Sparql
 Webpage for Sparql Queries     
 - Sample queries (modal windows that pop up solution)
 
+Another Webpage for Sparql Queries
+- Multilevel queries
+- Queries that have different parts of the tuple as variables
+- Queries that act like a venn diagram and find everything that two or more tuples have in common
+
+
 EXTRA IF WE HAVE TIME
 Make a sample database ourselves to show that Sparql doesn't have to just be Dbpedia
 
