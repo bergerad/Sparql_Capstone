@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Sparql capstone : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;lang=sql"></script>
+    <script src="javascripts/lang-sql.js"></script>
+    <title>About DBpedia</title>
+  </head>
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="dbpedia_banner" href="http://wiki.dbpedia.org">Go to&nbsp&nbsp</a>
+
+          <h1 id="project_title">About DBpedia</h1>
+          <h2 id="project_tagline"></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="about-dbpedia" class="anchor" href="#about-dbpedia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About DBpedia</h3>
+
+<p>According to DBpedia itself, DBpedia is a crowd-sourced community effort to extract structured information from Wikipedia and make this information available on the Web. DBpedia allows you to ask sophisticated queries against Wikipedia, and to link the different data sets on the Web to Wikipedia data. We hope that this work will make it easier for the huge amount of information in Wikipedia to be used in some new interesting ways. Furthermore, it might inspire new mechanisms for navigating, linking, and improving the encyclopedia itself.</p>
+
+<h3>
+<a id="comunity-projects" class="anchor" href="#comunity-projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Community Projects</h3>
+
+<p>
+Below is a list of DBpedia community projects:
+<ul>
+  <li><a href="http://dbpedia.org/datasets">Datasets</a> gives an overview about the DBpedia knowledge base.</li>
+  <li><a href="http://wiki.dbpedia.org/services-resources/ontology">Ontology</a> gives an overview about the DBpedia ontology.</li>
+  <li><a href="http://dbpedia.org/OnlineAccess">Online Access</a> describes how to access data set via a SPARQL and as Linked Data.</li>
+  <li><a href="http://dbpedia.org/Downloads">Downloads</a> provides the DBpedia data sets for download.</li>
+  <li><a href="http://dbpedia.org/services-resources/interlinking">Interlinking</a> describes how the DBpedia data set is interlinked with other datasets.</li>
+  <li><a href="http://wiki.dbpedia.org/use-cases">Use Cases</a> lists different use cases for the DBpedia data set.</li>
+  <li><a href="http://wiki.dbpedia.org/Documentation" name="documentation" title="Documentation" id="documentation">Extraction Framework</a> describes the DBpedia information extraction framework.</li>
+  <li><a href="http://wiki.dbpedia.org/Architecture" name="architecture" title="Architecture" id="architecture">Data Provision Architecture</a> paints a picture of the software and protocols used to serve DBpedia.</li>
+  <li><a href="http://wiki.dbpedia.org/Support" name="support" title="Support" id="support">Community</a> explains how the DBpedia community collaborates and how to contribute to the DBpedia.</li>
+  <li><a class="outerlink" href="http://mappings.dbpedia.org/index.php/Main_Page" title="Outgoing link">DBpedia Mapping Wiki</a> containing the mappings used by the DBpedia extraction.</li>
+  <li><a class="outerlink" href="http://dbpedia.org/Internationalization" title="Outgoing link">DBpedia Internationalization Effort</a> working towards providing multiple language-specific versions of DBpedia.</li>
+  <li><a href="http://wiki.dbpedia.org/DBpediaLive" name="dbpedialive" title="D Bpedia Live" id="dbpedialive">DBpedia-Live</a> presents the new DBpedia-Live framework.</li>
+  <li><a class="outerlink" href="http://spotlight.dbpedia.org" title="Outgoing link">DBpedia Spotlight</a> presents the DBpedia Spotlight tool for the semantic annotation of textual content.</li>
+  <li><a href="http://wiki.dbpedia.org/about/dbpedia-community/team">Credits</a> lists the people and institutions that have contributed to DBpedia so far.</li>
+  <li><a href="http://wiki.dbpedia.org/Changelog" name="changelog" title="Changelog" id="changelog">Change Log</a> lists the DBpedia releases and gives an overview about the changes for earch release.</li>
+  <li><a href="http://oldwiki.dbpedia.org/publications">Publications</a> lists scientific papers as well as blog posts about DBpedia.</li>
+  <li><a href="http://wiki.dbpedia.org/NextSteps" name="nextsteps" title="Next Steps" id="nextsteps">Next steps</a> describes ideas and future plans for the DBpedia project.</li>
+</ul>
+</p>
+
+<h3>
+<a id="dbpedia-prefixes" class="anchor" href="#dbpedia-prefixes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Predefined Namespace Prefixes</h3>
+
+<p>
+When DBpedia is queried by SPARQL, a set of predefined prefixes can be used as abbreviation of URIs representing resources in DBpedia.
+The availability of prefixes depends on the SPARQL endpoints the user is using although there are some convention followed by most endpoints.
+<br><br>
+Below is a list of commonly used prefixes:
+<ul>
+  <li>
+    <strong>owl:</strong> &lt;http://www.w3.org/2002/07/owl#&gt;
+    <br> <div style="padding-left:1em">This resource partially describes the built-in classes and properties.</div>  
+  </li>
+  <li>
+    <strong>xsd:</strong> &lt;http://www.w3.org/2001/XMLSchema#&gt;
+    <br> <div style="padding-left:1em">This resource describes the <a href="https://www.w3.org/2001/XMLSchema#xmlschemap1" title="XML Schema" id="xmlschema"> XML Schema</a> namespace and also contains a directory of links to these related resource.</div>
+  </li>
+  <li>
+    <strong>rdfs:</strong> &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+    <br> <div style="padding-left:1em">This resource provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary.</div>
+  </li>
+  <li>
+    <strong>rdf:</strong> &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+    <br> <div style="padding-left:1em">This resource provides The RDF Concepts Vocabulary which defines the RDF concept of an RDF datatype.</div>
+  </li>
+  <li>
+    <strong>foaf:</strong> &lt;http://xmlns.com/foaf/0.1/&gt;
+    <br> <div style="padding-left:1em">This resource describes the FOAF language, defined as a dictionary of named properties and classes using W3C's RDF technology.</div>
+  </li>
+  <li>
+    <strong>dc:</strong> &lt;http://purl.org/dc/elements/1.1/&gt;
+    <br> <div style="padding-left:1em">This resource sepecifies all metadata terms maintained by the Dublin Core Metadata Initiative.</div>
+  </li>
+  <li>
+    <strong>:</strong> &lt;http://dbpedia.org/resource/&gt;
+    <br> <div style="padding-left:1em">This is the root URI of all DBpedia Semantic Webs about things.</div>
+  </li>
+  <li>
+    <strong>dbpedia2:</strong> &lt;http://dbpedia.org/property/&gt;
+    <br> <div style="padding-left:1em">This is the root URI of all DBpedia Semantic Webs about properties.</div>
+  </li>
+  <li>
+    <strong>dbpedia:</strong> &lt;http://dbpedia.org/&gt;
+    <br> <div style="padding-left:1em">This is prefix abbreviate the root URI of DBpedia.</div>
+  </li>
+  </li>
+  <li>
+    <strong>skos:</strong> &lt;http://www.w3.org/2004/02/skos/core#&gt;
+    <br> <div style="padding-left:1em">This resource describes the schema available from the SKOS namespace.</div>
+  </li>
+</ul>
+<br> A full list of DBpedia SPARQL predefined namespcaes and prefixes can be found <a href="http://dbpedia.org/sparql?nsdecl" title="Prefixes" id="prefixes">here</a>.
+</p>
+
+<h3>
+<a id="using-prefixes" class="anchor" href="#using-prefixes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using Prefixes</h3>
+
+<p>
+Prefixes can be used as the abbreviation of the resource URI in a SPARQL query.
+<br> Below is an example of a ordinary SPARQL query that returning all the type property of Barack Obama:
+<br>
+<pre class="prettyprint lang-sql">
+  SELECT ?type WHERE {
+    &lt;http://dbpedia.org/resource/Barack_Obama&gt; rdf:type ?type.
+  }
+</pre>
+<br> Most SPARQL endpoints define the abbreviation <strong>:</strong> referring to the URI <strong>&lt;http://dbpedia.org/resource/&gt;</strong>. The resource URI to Barack Obama in the example above can to simplified to <strong>:Barack_Obama</strong>.
+<br> Below is an example of a SPARQL query equivalent to the above one but using prefixes:
+<br>
+<pre class="prettyprint lang-sql">
+  SELECT ?type WHERE {
+    :Barack_Obama rdf:type ?type.
+  }
+</pre>
+</p>
+
+<h3>
+<a id="alternative-browsing" class="anchor" href="#alternative-browsing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Alternative Way of Browsing DBpedia</h3>
+
+<p>
+Despite the simplicity of querying DBpedia by SPARQL, it seems to be more intuitive to browsing DBpedia in traditional web browser. For each URI in DBpedia resource root <strong>&lt;http://dbpedia.org/resource/&gt;</strong>, there is a corresponding HTML page under the directory <strong>&lt;http://http://dbpedia.org/page/&gt;</strong> that visualize all property of the piece of resource. For example, Barack Obama with DBpedia URI <strong>&lt;http://dbpedia.org/resource/Barack_Obama&gt;</strong> has a HTML page at <strong><a href="http://dbpedia.org/page/Barack_Obama">&lt;http://dbpedia.org/page/Barack_Obama&gt;</a></strong>. Opening the latter one with web browser, a table similar to the following one will be printed.
+<br>
+<img src="images/bodb.png">
+<br> The table has all properties that the resource has at the first column with the corresponding values at the second column.
+</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Sparql capstone maintained by <a href="https://github.com/bergerad">bergerad</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
