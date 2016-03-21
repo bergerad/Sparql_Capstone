@@ -45,26 +45,28 @@
 <a id="comunity-projects" class="anchor" href="#comunity-projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
 
 <p>
-Say you want to know about all the First Ladies of all the US Presidents. What were they involved in, what were their professions, where were they from? You can research every single first lady, hope to get lucky and find a Buzzfeed listicle of 40 things you didn't know First Ladies did (#13 will shock you!) - OR, you can create a multi-layer query to DBpedia and get answers immediately. 
+Say you want to know about all the First Ladies of all the US Presidents. What were they involved in, what were their professions, where were they from? 
+<br>You can research every single first lady, hope to get lucky and find a Buzzfeed listicle of 40 things you didn't know First Ladies did (#13 will shock you!) 
+<br>- OR, you can create a multi-layer query to DBpedia and get answers immediately. 
 <br>
 Suppose you know the url for DBpedia's entry on Unites States Presidents. Start with this tuple: 
-<br>
+<br><br>
 <pre class="prettyprint lang-sql">
   ?pres rdf:type &lt;http://dbpedia.org/class/yago/PresidentsOfTheUnitedStates&gt;.  
 </pre> 
 <br>This gives you a list of all the US Presidents in the variable "?pres". Where do you go from there? 
 <br>Right, you can now make a list of the wives of all the presidents. That tuple is:
-<br>
+<br><br>
 <pre class="prettyprint lang-sql">
   ?pres &lt;http://dbpedia.org/property/spouse&gt; ?wives.
 </pre> 
 <br>Now we can get a list of every type associated with the entire list of the wives of the presidents of the Unites States with this simple tuple here:
-<br>
+<br><br>
 <pre class="prettyprint lang-sql">
   ?wives rdf:type ?type.
 </pre>
 <br> We just need to put everything together into one query like so:
-<br>
+<br><br>
 <pre class="prettyprint lang-sql">
   select distinct ?type where {
 ?pres rdf:type &lt;http://dbpedia.org/class/yago/PresidentsOfTheUnitedStates&gt;.
@@ -78,17 +80,17 @@ Suppose you know the url for DBpedia's entry on Unites States Presidents. Start 
 So we've shown that you can use multiple variables in a single query, building up a list that gets more and more specific the deeper the query goes. Are there any other tricks you can use? 
 <br>Yes. For instance, you can call the same variable in two or more different lines of a query to return a list of every entity that corresponds to all the lines. 
 <br>As an example, this tuple returns a list of all the entities that have the type "woman" in the variable ?x - 
-<br>
+<br><br>
 <pre class="prettyprint lang-sql">
   ?x rdf:type &lt;http://dbpedia.org/class/yago/Woman110787470&gt;.  
 </pre> 
 <br>And this tuple returns a list of all the entities that have the type "senator" in the variable ?x -
-<br>
+<br><br>
 <pre class="prettyprint lang-sql">
   ?x rdf:type &lt;http://dbpedia.org/class/yago/Senator110578471&gt;.
 </pre> 
 <br>Obviously, these are ridiculously long lists. But when we combine the two tuples into one query, we get only the women who are senators. Think of it like the intersection of a Venn Diagram. It only returns a list of entities that meet all the classifications.
-<br>
+<br><br>
 <pre class="prettyprint lang-sql">
   select distinct ?x where {
     ?x rdf:type &lt;http://dbpedia.org/class/yago/Woman110787470&gt;
@@ -97,7 +99,7 @@ So we've shown that you can use multiple variables in a single query, building u
 </pre>
 <br>You can use this method to make all sorts of intersting searches. You are limited only by your imagination.
 <br>Who can guess what this query returns?
-<br>
+<br><br>
 <pre class="prettyprint lang-sql">
   select distinct ?Needlehaystack where {
     ?Needlehaystack rdf:type &lt;http://dbpedia.org/class/yago/GoodPerson110138767&gt;.
