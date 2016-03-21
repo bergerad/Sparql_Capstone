@@ -371,7 +371,7 @@ Full-Width Styles
 }
 
 #NavBar {
-  position: absolute;
+  position: relative;
   width: 600px;
   z-index: 10;
   bottom: -40px;
