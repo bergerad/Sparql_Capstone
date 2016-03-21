@@ -52,10 +52,10 @@ Say you want to know about all the First Ladies of all the US Presidents. What w
 <br>
 Suppose you know the url for DBpedia's entry on Unites States Presidents. Start with this tuple: 
 <br>
-<a href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+distinct+%3Fpres+where+%7B%0D%0A%0D%0A%3Fpres+rdf%3Atype+%3Chttp%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2FPresidentsOfTheUnitedStates%3E+.%0D%0A%0D%0A%7D&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on"><pre class="prettyprint lang-sql">
+<pre class="prettyprint lang-sql"><a href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+distinct+%3Fpres+where+%7B%0D%0A%0D%0A%3Fpres+rdf%3Atype+%3Chttp%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2FPresidentsOfTheUnitedStates%3E+.%0D%0A%0D%0A%7D&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on">
   ?pres rdf:type &lt;http://dbpedia.org/class/yago/PresidentsOfTheUnitedStates&gt;.  
-</pre> 
 </a>
+</pre> 
 <br>This gives you a list of all the US Presidents in the variable "?pres". Where do you go from there? 
 <br>Right, you can now make a list of the wives of all the presidents. That tuple is:
 <br><br>
