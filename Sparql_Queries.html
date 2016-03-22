@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Sparql capstone : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;lang=sql"></script>
+    <script src="javascripts/lang-sql.js"></script>
+    <title>Sparql Queries!</title>
+  </head>
+  <body>
+    
+    
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <h1 id="project_title">Sparql Queries</h1>
+          
+          <section id="NavBar">
+            <uln>
+               <lin><a class="active" href="http://bergerad.github.io/Sparql_Capstone/about_dbpedia.html">About DBpedia</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/Semantic_Web.html">Semantic Web</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/Sparql_Introduction.html">Introduction to Sparql</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/Sparql_Queries.html">Sparql Queries</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/More_Sparql_Queries.html">More Sparql Queries</a></lin>
+            </uln>
+          </section>
+        </header>
+    </div>
+    
+    
+
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>What do SPARQL queries look like?</h3>
+		
+			<p>SPARQL is based on the SQL query language, and when constructing a query it might help to think of the rdf database as a 3 attribute SQL table. The principle will be the <code>SELECT</code> line, in which the desired return variable are listed. After that comes the <code>WHERE</code> section, in which the rules governing the return variables are defined. This section may introduce many statements, and introduce intermediate variables.</p
+			
+			<p>Although SPARQL does provide some support for mathmatical operations and string manipulation, we advise using another language for that sort of advanced processing.</p
+			
+			<p><strong><em>Please note that the quotation marks are for display only, this syntax is incorrect.</em></strong></p>
+
+
+		<h3>Basic Query</h3>
+
+			<p>Let's get a list of URIs for all the presidents!</p>
+			<p>In order to generate this query, we had to guess/know the URI for the US president's class, as well as the correct reference for the rdf type property. If performing this sort of query on your own, you can expand your "vocabulary" by exploring the database using queries to find new URIs.</p
+			
+			<a target="_blank" href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+%3Fpresident+where+{%0D%0A++%3Fpresident+rdf%3Atype+%3Chttp%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2FPresidentsOfTheUnitedStates%3E.+%0D%0A}&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on">
+<pre class="prettyprint lang-sql">
+select ?president 
+where {
+  ?president rdf:type <"http://dbpedia.org/class/yago/PresidentsOfTheUnitedStates">
+}</pre>
+			</a>
+
+			
+		<h3>Reversing the Query</h3>
+
+			<p>In the last query, we generated a list of URIs for all the presidents of the United States. Now, let's try and find Ronald Reagan's wife.</p>
+			<p>We now know that his URI is "http://dbpedia.org/resource/Ronald_Reagan". We aren't sure what the predicate of our sentance should be, so let's just introduce a new variable.</p>
+			
+			<a target="_blank" href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+%3Fwife+%0D%0Awhere+{%0D%0A++%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FRonald_Reagan%3E+%3Frelationship+%3Fwife%0D%0A}&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on">
+<pre class="prettyprint lang-sql">
+select ?wife 
+where {
+  <"http://dbpedia.org/resource/Ronald_Reagan"> ?relationship ?wife
+}</pre>
+			</a>
+			
+			<p>This query returned a lot of information, and it was hard to find what we wanted! Let's try returning the types of relationships Ronald Regan participates in instead.</p
+			
+			<a target="_blank" href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+%3Fwife+%0D%0Awhere+{%0D%0A++%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FRonald_Reagan%3E+%3Frelationship+%3Fwife%0D%0A}&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on">
+<pre class="prettyprint lang-sql">
+select ?relationship 
+where {
+  <"http://dbpedia.org/resource/Ronald_Reagan"> ?relationship ?wife
+}</pre>
+			</a>
+			
+			<p>This time the query returned a bunch of duplicates! Luckily, we can add the <code>distict</code> keyword to ensure that only one of each predicate is returned.</p
+			
+			<a target="_blank" href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+distinct+%3Frelationship+%0D%0Awhere+{%0D%0A++%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FRonald_Reagan%3E+%3Frelationship+%3Fwife%0D%0A}&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on">
+<pre class="prettyprint lang-sql">
+select distinct ?relationship 
+where {
+  <"http://dbpedia.org/resource/Ronald_Reagan"> ?relationship ?wife
+}</pre>
+			</a>
+			
+			<p>Here the URI for spouse is easily visible ("http://dbpedia.org/property/spouse"). Let's plug that into our original query to find Ronald Regan's wife.</p>
+			
+			<a target="_blank" href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+%3Fwife+%0D%0Awhere+{%0D%0A++%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FRonald_Reagan%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fproperty%2Fspouse%3E+%3Fwife%0D%0A}&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on">
+<pre class="prettyprint lang-sql">
+select ?wife 
+where {
+  <"http://dbpedia.org/resource/Ronald_Reagan"> <"http://dbpedia.org/property/spouse"> ?wife
+}</pre>
+			</a>
+			
+			<p>We found both of Ronald Reagan's wife ("http://dbpedia.org/resource/Jane_Wyman")! Hooray!</p>
+			
+			
+			
+			<h3>Expanding the Query</h3>
+			
+			<p>Now let's go back and look for other links between Ronal Reagan and his wife. Perhaps they were also coworkers?</p>
+			
+			<a target="_blank" href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+%3Frelationship+%0D%0Awhere+{%0D%0A++%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FRonald_Reagan%3E+%3Frelationship+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FJane_Wyman%3E%0D%0A}&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on">
+<pre class="prettyprint lang-sql">
+select ?relationship 
+where {
+  <"http://dbpedia.org/resource/Ronald_Reagan"> ?relationship <"http://dbpedia.org/resource/Jane_Wyman">
+}</pre>
+			</a>
+			
+			<p>It appears that dbpedia believes that they were only married, however I know that they also costarred in several movies. This could either be a type of relationship that dbpedia doesn't cover, or it could be a flaw in the database's scrapping process. What queries would you generate to try and find a "Co-Star" relationship?</p>
+			
+			<h3>Summary</h3>
+			
+			<p>On this page, we proformed many queries involving the Reagans. We showed that intermediate variables can be used when an exact relationship is unknown, and showed that you can return any part of the RDF tuple using SPARQL. We talked about the <code>select</code>, <code>where</code>, and <code>distict</code> keywords. Utilization of the procedures shown here will help you expand your vocabulary and perform a wide variety of queries in the Virtuoso environment.</p>
+
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Sparql capstone maintained by <a href="https://github.com/bergerad">bergerad</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
