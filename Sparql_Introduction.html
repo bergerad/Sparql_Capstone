@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Sparql capstone : ">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;lang=sql"></script>
+    <script src="javascripts/lang-sql.js"></script>
+    <title>Introduction to SPARQL</title>
+  </head>
+  <body>
+    
+    
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <h1 id="project_title">Introduction to SPARQL</h1>
+          
+          <section id="NavBar">
+            <uln>
+               <lin><a class="active" href="http://bergerad.github.io/Sparql_Capstone/about_dbpedia.html">About DBpedia</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/Semantic_Web.html">Semantic Web</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/Sparql_Introduction.html">Introduction to Sparql</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/More_Sparql_Queries.html">Sparql Queries</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/More_Sparql_Queries.html">More Sparql Queries</a></lin>
+            </uln>
+          </section>
+        </header>
+    </div>
+    
+    
+
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+
+<h3> What is SPARQL? </h3>
+
+<p> 
+SPARQL is a recursive acryonym which stands for "SPARQL Protocol and RDF Query Language."
+This query language is specially designed for for returning and manipulating RDF triples from databases like DBpedia. 
+Queries return tables which can then be structured as XML, JSON, CSV or TSV so that the results can be used in applications.
+The SPARQL Overview document on W3.org (link can be found in the resource sub-section) states that:
+
+<blockquote>
+SPARQL can be used to express queries across diverse data sources, whether the data is stored natively as RDF or viewed as RDF via middleware. SPARQL contains capabilities for querying required and optional graph patterns along with their conjunctions and disjunctions. SPARQL also supports extensible value testing and constraining queries by source RDF graph.
+</blockquote>
+
+</p>
+<p>
+The syntax and styling of SPARQL is based on SQL and should be easy to follow if you are already familiar with SQL. 
+In the following sub-sections you will find a very quick and basic introduction to SPARQL syntax which you will encounter in 'SPARQL Queries' and 'More SPARQL Queries' as well as some resources which you might find helpful when learning about and using SPARQL. 
+</p>
+
+<h3> Quick, Basic Introduction to Structure of SPARQL Queries </h3>
+
+<p>
+In this tutorial, we will be focusing mainly on <code>SELECT</code> queries which returns a table.  
+Since SPARQL deals with triples, the <code>WHERE</code> clause requires that its body matches a triple pattern.
+Note, we can think of triples as typically following the general pattern: <code>subject, property, object</code>.
+</p>
+<p>
+Some things to note before we get into the general structure is that you may match triples by using variables. Variables are prefixed by a question mark <code>?</code>.
+<br>
+You will also need to specify URIs for most of the triple patterns as well. 
+URIs must be contained within angled brackets <code>&lt;,&gt;</code>.
+</p>
+
+<h4> 
+General Structure
+</h4>
+<p>
+Below is a general structure of a <code>SELECT</code> query that matches exactly one variable (as the subject).
+<pre class="prettyprint lang-sql">
+SELECT ?desiredVariable
+WHERE 
+{
+   ?desiredVariable &lt;URI_for_property&gt; &lt;URI_for_object&gt;
+}
+</pre>
+</p>
+
+<p>
+
+In addition to URIs, you may use quotes to in order to match a specific value (case sensitive): 
+<pre class="prettyprint lang-sql">
+   ?desiredVariable "specific property" &lt;URI for object&gt;
+</pre>
+</p>
+
+</p>
+<p>
+To simplify the queries with repeated URIs which differ only by the selected feature,  you can use the <code>PREFIX</code> attribute.  
+<br/>
+
+<pre class="prettyprint lang-sql">
+PREFIX foo &lt;URI_for_database#prefix&gt;
+SELECT ?desiredVariable
+WHERE
+{
+   ?desiredVariable foo:bar foo:baz
+}
+</pre>
+</p>
+
+
+<h3> Resources for SPARQL </h3>
+
+<p>
+Here are some useful resources that you can use when learning about and using SPARQL.
+ 
+<ul>
+
+<li>You can access a web-facing SPARQL interface for DBpedia at <a href="http://dbpedia.org/sparql">their Virtuoso endpoint</a>.
+It would be good to use a web-facing interface like the one linked if you are going to follow along in the next two sections 'SPARQL Queries' and 'More SPARQL Queries.'
+</li>
+
+<li>
+If you want a more in-depth exploration of the syntax for SPARQL, the 'cheatsheet' by Lee Feigenbaum is a <a href="http://www.slideshare.net/LeeFeigenbaum/sparql-cheat-sheet">good reference</a>.
+</li>
+
+<li>
+If even the above reference does not satisfy you, then the <a href="https://www.w3.org/TR/sparql11-overview/">SPARQL overview</a> by the SPARQL Working Group may fit your needs.
+</li>
+
+<li>
+<a href="https://jena.apache.org/">Jena</a> is a Java framework under The Apache Software Foundation which is used for developing Semantic Web applications
+</li>
+
+</ul>
+
+ </p>
+
+
+
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Sparql capstone maintained by <a href="https://github.com/bergerad">bergerad</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
