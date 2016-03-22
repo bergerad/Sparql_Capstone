@@ -17,15 +17,15 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <h1 id="project_title">More SParql Queries</h1>
+          <h1 id="project_title">Advanced SParql Queries</h1>
           
           <section id="NavBar">
             <uln>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/index.html">Semantic Web</a></lin>
                <lin><a class="active" href="http://bergerad.github.io/Sparql_Capstone/about_dbpedia.html">About DBpedia</a></lin>
-               <lin><a href="http://bergerad.github.io/Sparql_Capstone/Semantic_Web.html">Semantic Web</a></lin>
                <lin><a href="http://bergerad.github.io/Sparql_Capstone/Sparql_Introduction.html">Introduction to Sparql</a></lin>
-               <lin><a href="http://bergerad.github.io/Sparql_Capstone/More_Sparql_Queries.html">Sparql Queries</a></lin>
-               <lin><a href="http://bergerad.github.io/Sparql_Capstone/More_Sparql_Queries.html">More Sparql Queries</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/Sparql_Queries.html">Basic Sparql Queries</a></lin>
+               <lin><a href="http://bergerad.github.io/Sparql_Capstone/More_Sparql_Queries.html">Advanced Sparql Queries</a></lin>
             </uln>
           </section>
         </header>
@@ -43,7 +43,7 @@
 <p>So perhaps you're left with the question: Why use Sparql? What can it do that a google search can't? As it turns out, lots of things.</p>
 
 <h3>
-<a id="comunity-projects" class="anchor" href="#comunity-projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
+<a id="comunity-projects" class="anchor" href="#comunity-projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multi-Level Queries</h3>
 
 <p>
 Say you want to know about all the First Ladies of all the US Presidents. What were they involved in, what were their professions, where were they from? 
@@ -69,12 +69,18 @@ Suppose you know the url for DBpedia's entry on Unites States Presidents. Start 
 <br><br>
 <a href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+distinct+%3Ftype+where+%7B%0D%0A%0D%0A%3Fpres+rdf%3Atype+%3Chttp%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2FPresidentsOfTheUnitedStates%3E+.%0D%0A%0D%0A%3Fpres+%3Chttp%3A%2F%2Fdbpedia.org%2Fproperty%2Fspouse%3E+%3Fwives.%0D%0A%0D%0A%3Fwives+rdf%3Atype+%3Ftype%0D%0A%0D%0A%7D+&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on">
 <pre class="prettyprint lang-sql">
-  ?pres rdf:type &lt;http://dbpedia.org/class/yago/PresidentsOfTheUnitedStates&gt;. 
-  ?pres &lt;http://dbpedia.org/property/spouse&gt; ?wives.
-  ?wives rdf:type ?type.
+  select distinct ?type where {
+    ?pres rdf:type &lt;http://dbpedia.org/class/yago/PresidentsOfTheUnitedStates&gt;. 
+    ?pres &lt;http://dbpedia.org/property/spouse&gt; ?wives.
+    ?wives rdf:type ?type.
+  }
 </pre>
 </a>
 </p>
+
+<h3>
+<a id="comunity-projects" class="anchor" href="#comunity-projects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Intersecting Classes</h3>
+
 <p>
 So we've shown that you can use multiple variables in a single query, building up a list that gets more and more specific the deeper the query goes. Are there any other tricks you can use? 
 <br><br>Yes. For instance, you can call the same variable in two or more different lines of a query to return a list of every entity that corresponds to all the lines. 
