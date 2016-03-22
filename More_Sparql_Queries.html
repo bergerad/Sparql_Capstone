@@ -69,9 +69,11 @@ Suppose you know the url for DBpedia's entry on Unites States Presidents. Start 
 <br><br>
 <a href = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+distinct+%3Ftype+where+%7B%0D%0A%0D%0A%3Fpres+rdf%3Atype+%3Chttp%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2FPresidentsOfTheUnitedStates%3E+.%0D%0A%0D%0A%3Fpres+%3Chttp%3A%2F%2Fdbpedia.org%2Fproperty%2Fspouse%3E+%3Fwives.%0D%0A%0D%0A%3Fwives+rdf%3Atype+%3Ftype%0D%0A%0D%0A%7D+&format=text%2Fhtml&CXML_redir_for_subjs=121&CXML_redir_for_hrefs=&timeout=30000&debug=on">
 <pre class="prettyprint lang-sql">
-  ?pres rdf:type &lt;http://dbpedia.org/class/yago/PresidentsOfTheUnitedStates&gt;. 
-  ?pres &lt;http://dbpedia.org/property/spouse&gt; ?wives.
-  ?wives rdf:type ?type.
+  select distinct ?type where {
+    ?pres rdf:type &lt;http://dbpedia.org/class/yago/PresidentsOfTheUnitedStates&gt;. 
+    ?pres &lt;http://dbpedia.org/property/spouse&gt; ?wives.
+    ?wives rdf:type ?type.
+  }
 </pre>
 </a>
 </p>
